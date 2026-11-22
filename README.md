@@ -1,8 +1,6 @@
-# ACRA New Companies Delta — Singapore Company Registrations & SSIC Analytics
+# Singapore New Company Registrations — Monthly Delta of 1M+ Companies for KYB & Market Signals
 
-Searchable, programmatic access to Singapore's company register as published by ACRA on data.gov.sg — the complete typed archive of **non-individual entities** (Local Companies, Limited Liability Partnerships and Foreign Company Branches), the **latest month's new-registrations cohort**, and genuinely derived analytics: registrations by month, status breakdown, top SSIC codes and divisions, and postal-district distribution.
-
-Built for the teams that sell to, screen, or study Singapore companies — corporate services firms, KYB/compliance teams, market researchers, and the agents and tools that work for them — inside Apify, where per-result pricing means you pay only for the rows you pull.
+Track company formation in Asia's main incorporation hub. 1,054,279 Singapore business entities (ACRA register, registrations through October 2026) with a monthly-delta mode that returns only newly registered companies — the input KYB providers, B2B data platforms and expansion teams use to spot new-market entrants early. Entity-level records only: companies, LLPs and foreign-company branches; sole proprietorships and partnerships (person-level records) are excluded by design. Snapshot-dated; refreshed monthly.
 
 ## What you get
 
@@ -20,11 +18,11 @@ Built for the teams that sell to, screen, or study Singapore companies — corpo
 
 ## Data source, licence and attribution
 
-Source dataset: **"ACRA Information on Corporate Entities"**, Accounting and Corporate Regulatory Authority, published on data.gov.sg as 27 CSV files split by first letter of entity name (dataset IDs `d_8575e84912df3c28995b8e6e0e05205a` through `d_300ddc8da4e8f7bdc1bfc62d0d99e2e7`; full list in the snapshot metadata), accessed 22 Nov 2026. Contains information from the Government of Singapore accessed via data.gov.sg, used under the **Singapore Open Data Licence v1.0** (https://data.gov.sg/open-data-licence).
+Source dataset: **"ACRA Information on Corporate Entities"**, Accounting and Corporate Regulatory Authority, published on data.gov.sg as 27 CSV files split by first letter of entity name (dataset IDs `d_8575e84912df3c28995b8e6e0e05205a` through `d_300ddc8da4e8f7bdcd1bfc620d09e2e7`; full list in the snapshot metadata), accessed 22 Nov 2026. Contains information from the Government of Singapore accessed via data.gov.sg, used under the **Singapore Open Data Licence v1.0** (https://data.gov.sg/open-data-licence).
 
 **Independent tool; not affiliated with ACRA or GovTech, and not endorsed by them.**
 
-Personal-data handling: the person-level entity classes named above are excluded at ingest under a hard-coded rule, and the build's test suite asserts no excluded entity type can appear in the snapshot. What ships is company-level register data: legal-person names, registered office addresses as published by ACRA, activity codes, statuses and dates.
+Personal-data handling: the person-level entity classes named above are excluded at ingest under a hard-coded list; a runtime audit counts every entity type present after ingest and reports the count in the run logs, so any source-side change to those classes is visible. Entity names and registered-office addresses are company-level records.
 
 ## Pricing
 
@@ -35,7 +33,7 @@ Personal-data handling: the person-level entity classes named above are excluded
 | Field | Meaning |
 |---|---|
 | `mode` | `rows`, `analytics`, or `both` (default) |
-| `monthFrom` / `monthTo` | registration month range as `YYYY-MM` (defaults prefilled to the latest month, so a default run returns just the new-registrations cohort) |
+| `monthFrom` / `monthTo` | registration month range as `YYYY-MM` (defaults prefilled to the latest month, 2026-10) |
 | `onlyNewThisMonth` | restrict to the snapshot's latest registration month |
 | `entityType` | case-insensitive substring match on entity type |
 | `entityStatus` | case-insensitive substring match on entity status |
@@ -48,4 +46,4 @@ Personal-data handling: the person-level entity classes named above are excluded
 
 ## Terms
 
-Outputs are derived from the source dataset named above and are provided as-is for business intelligence. Names, statuses, dates and coverage are exactly as published by the source, subject to the scope exclusions in the coverage statement above; check it before relying on any aggregate.
+Outputs are derived from the source dataset named above and are provided as-is for business intelligence. Registrations, statuses and coverage are exactly as published by the source, subject to the statements in the coverage section above; check it before relying on any aggregate.
